@@ -16,4 +16,7 @@ module.exports = class ApiError extends Error {
   static BannedUser(){
     return new ApiError(409,{})
   }
+  static emailExisted(){
+    return new ApiError(410,{})
+  }
 }

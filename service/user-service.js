@@ -11,7 +11,7 @@ class UserService {
   async registration (email,password,username,avatarUrl,role){
     const candidate  = await UserModel.findOne({email});
     if(candidate) {
-      throw ApiError.BadRequest("email reserved")
+      throw ApiError.emailExisted()
     }
     const hashPassword = bcrypt.hashSync(password,10);
     const activationLink = uuid.v4();

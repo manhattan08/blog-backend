@@ -15,10 +15,10 @@ class PostService {
   }
   async getAll(num){
     if(num === 1){
-      const post1 = await PostModel.find().populate("username","username").populate("avatarUrl","avatarUrl").sort({"viewsCount":-1});
+      const post1 = await PostModel.find().limit(50).populate("username","username").populate("avatarUrl","avatarUrl").sort({"viewsCount":-1});
       return post1;
     }
-    const posts = await PostModel.find().populate("username","username").populate("avatarUrl","avatarUrl").sort({"createdAt":-1});
+    const posts = await PostModel.find().limit(50).populate("username","username").populate("avatarUrl","avatarUrl").sort({"createdAt":-1});
     return posts;
   }
   async update(userId,postId,title,text,imageUrl,tags){
